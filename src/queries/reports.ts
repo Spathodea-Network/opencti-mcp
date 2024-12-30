@@ -58,7 +58,7 @@ query LatestReport($first: Int) {
                 id
                 entity_type
                 parent_types
-                created_at
+          created
                 updated_at
                 standard_id
                 created
@@ -205,16 +205,16 @@ query ThreatActors($search: String, $first: Int) {
   stixCoreObjects(
     search: $search,
     first: $first,
-    types: ["Threat-Actor"]
+    types: ["ThreatActorGroup"]
   ) {
     edges {
       node {
-        ... on ThreatActor {
+        ... on ThreatActorGroup {
           id
           name
           description
-          created_at
-          modified_at
+          created
+          modified
           threat_actor_types
           first_seen
           last_seen
