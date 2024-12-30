@@ -2,129 +2,27 @@ export const FILE_BY_ID_QUERY = `
 query FileById($id: String!) {
   file(id: $id) {
     id
-    entity_type
     name
     size
     lastModified
-    metaData {
-      encoding
-      mimetype
-      version
-      messages {
-        timestamp
-        message
-        sequence
-        source
-      }
-      errors {
-        timestamp
-        message
-        sequence
-        source
-      }
-      list_filters
-      entity_id
-      entity {
-        id
-        entity_type
-        parent_types
-        standard_id
-      }
-      labels_text
-      labels
-      file_markings
-      creator_id
-      external_reference_id
-      creator {
-        id
-        name
-        entity_type
-      }
-      description
-      order
-      inCarousel
-      analysis_content_source
-      analysis_content_type
-      analysis_type
-    }
-    objectMarking {
-      id
-      definition
-      x_opencti_order
-      x_opencti_color
-    }
     uploadStatus
-    works {
-      id
-      name
-      status
-    }
   }
 }
 `;
 
 export const ALL_FILES_QUERY = `
 query AllFiles {
-  importFiles {
+  importFiles(first: 100) {
     edges {
       node {
         id
-        entity_type
         name
         size
+        uploadStatus
         lastModified
         metaData {
-          encoding
           mimetype
           version
-          messages {
-            timestamp
-            message
-            sequence
-            source
-          }
-          errors {
-            timestamp
-            message
-            sequence
-            source
-          }
-          list_filters
-          entity_id
-          entity {
-            id
-            entity_type
-            parent_types
-            standard_id
-          }
-          labels_text
-          labels
-          file_markings
-          creator_id
-          external_reference_id
-          creator {
-            id
-            name
-            entity_type
-          }
-          description
-          order
-          inCarousel
-          analysis_content_source
-          analysis_content_type
-          analysis_type
-        }
-        objectMarking {
-          id
-          definition
-          x_opencti_order
-          x_opencti_color
-        }
-        uploadStatus
-        works {
-          id
-          name
-          status
         }
       }
     }

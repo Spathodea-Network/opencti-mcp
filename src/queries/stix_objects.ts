@@ -169,8 +169,22 @@ query AllAttackPatterns($first: Int, $after: ID) {
 `;
 
 export const CAMPAIGN_BY_NAME_QUERY = `
-query CampaignByName($name: String!) {
-  campaigns(first: 1, search: $name) {
+query CampaignByName($name: Any!) {
+  campaigns(
+    first: 1,
+    filters: {
+      mode: and,
+      filters: [
+        {
+          key: "name",
+          values: [$name],
+          operator: eq,
+          mode: or
+        }
+      ],
+      filterGroups: []
+    }
+  ) {
     edges {
       node {
         id
@@ -181,14 +195,10 @@ query CampaignByName($name: String!) {
         description
         first_seen
         last_seen
-        indicators(first: 5) {
-          edges {
-            node {
-              id
-              pattern
-            }
-          }
-        }
+        created
+        modified
+        created_at
+        updated_at
       }
     }
   }
