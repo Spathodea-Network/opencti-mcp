@@ -6,10 +6,26 @@
 OpenCTI MCP Server is a Model Context Protocol (MCP) server that provides seamless integration with OpenCTI (Open Cyber Threat Intelligence) platform. It enables querying and retrieving threat intelligence data through a standardized interface.
 
 ## Features
-- Fetch latest threat intelligence reports
-- Search for malware information
-- Query indicators of compromise
-- Search for threat actors
+- Fetch and search threat intelligence data
+  - Get latest reports and search by ID
+  - Search for malware information
+  - Query indicators of compromise
+  - Search for threat actors
+- User and group management
+  - List all users and groups
+  - Get user details by ID
+- STIX object operations
+  - List attack patterns
+  - Get campaign information by name
+- System management
+  - List connectors
+  - View status templates
+- File operations
+  - List all files
+  - Get file details by ID
+- Reference data access
+  - List marking definitions
+  - View available labels
 - Customizable query limits
 - Full GraphQL query support
 
@@ -67,7 +83,10 @@ Create a configuration file in your MCP settings location:
 
 ## Available Tools
 
-### get_latest_reports
+## Available Tools
+
+### Reports
+#### get_latest_reports
 Retrieves the most recent threat intelligence reports.
 ```typescript
 {
@@ -78,7 +97,19 @@ Retrieves the most recent threat intelligence reports.
 }
 ```
 
-### search_malware
+#### get_report_by_id
+Retrieves a specific report by its ID.
+```typescript
+{
+  "name": "get_report_by_id",
+  "arguments": {
+    "id": "report-uuid"  // Required
+  }
+}
+```
+
+### Search Operations
+#### search_malware
 Searches for malware information in the OpenCTI database.
 ```typescript
 {
@@ -90,7 +121,7 @@ Searches for malware information in the OpenCTI database.
 }
 ```
 
-### search_indicators
+#### search_indicators
 Searches for indicators of compromise.
 ```typescript
 {
@@ -102,7 +133,7 @@ Searches for indicators of compromise.
 }
 ```
 
-### search_threat_actors
+#### search_threat_actors
 Searches for threat actor information.
 ```typescript
 {
@@ -111,6 +142,120 @@ Searches for threat actor information.
     "query": "APT",
     "first": 10  // Optional, defaults to 10
   }
+}
+```
+
+### User Management
+#### get_user_by_id
+Retrieves user information by ID.
+```typescript
+{
+  "name": "get_user_by_id",
+  "arguments": {
+    "id": "user-uuid"  // Required
+  }
+}
+```
+
+#### list_users
+Lists all users in the system.
+```typescript
+{
+  "name": "list_users",
+  "arguments": {}
+}
+```
+
+#### list_groups
+Lists all groups with their members.
+```typescript
+{
+  "name": "list_groups",
+  "arguments": {
+    "first": 10  // Optional, defaults to 10
+  }
+}
+```
+
+### STIX Objects
+#### list_attack_patterns
+Lists all attack patterns in the system.
+```typescript
+{
+  "name": "list_attack_patterns",
+  "arguments": {
+    "first": 10  // Optional, defaults to 10
+  }
+}
+```
+
+#### get_campaign_by_name
+Retrieves campaign information by name.
+```typescript
+{
+  "name": "get_campaign_by_name",
+  "arguments": {
+    "name": "campaign-name"  // Required
+  }
+}
+```
+
+### System Management
+#### list_connectors
+Lists all system connectors.
+```typescript
+{
+  "name": "list_connectors",
+  "arguments": {}
+}
+```
+
+#### list_status_templates
+Lists all status templates.
+```typescript
+{
+  "name": "list_status_templates",
+  "arguments": {}
+}
+```
+
+### File Operations
+#### get_file_by_id
+Retrieves file information by ID.
+```typescript
+{
+  "name": "get_file_by_id",
+  "arguments": {
+    "id": "file-uuid"  // Required
+  }
+}
+```
+
+#### list_files
+Lists all files in the system.
+```typescript
+{
+  "name": "list_files",
+  "arguments": {}
+}
+```
+
+### Reference Data
+#### list_marking_definitions
+Lists all marking definitions.
+```typescript
+{
+  "name": "list_marking_definitions",
+  "arguments": {}
+}
+```
+
+#### list_labels
+Lists all available labels.
+```typescript
+{
+  "name": "list_labels",
+  "arguments": {}
 }
 ```
 
