@@ -2,6 +2,8 @@
 
 [Traditional Chinese (繁體中文)](README.zh-TW.md)
 
+<a href="https://glama.ai/mcp/servers/ml61kiz1gm"><img width="380" height="200" src="https://glama.ai/mcp/servers/ml61kiz1gm/badge" alt="OpenCTI Server MCP server" /></a>
+
 ## Overview
 OpenCTI MCP Server is a Model Context Protocol (MCP) server that provides seamless integration with OpenCTI (Open Cyber Threat Intelligence) platform. It enables querying and retrieving threat intelligence data through a standardized interface.
 
