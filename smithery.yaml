@@ -1,0 +1,21 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - openctiUrl
+      - openctiToken
+    properties:
+      openctiUrl:
+        type: string
+        description: The URL of the OpenCTI instance.
+      openctiToken:
+        type: string
+        description: The API token for the OpenCTI instance.
+  commandFunction:
+    # A function that produces the CLI command to start the MCP on stdio.
+    |-
+    (config) => ({command: 'node', args: ['build/index.js'], env: {OPENCTI_URL: config.openctiUrl, OPENCTI_TOKEN: config.openctiToken}})
