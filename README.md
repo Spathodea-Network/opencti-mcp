@@ -1,5 +1,6 @@
 # OpenCTI MCP Server
 
+[![smithery badge](https://smithery.ai/badge/opencti-server)](https://smithery.ai/server/opencti-server)
 [Traditional Chinese (繁體中文)](README.zh-TW.md)
 
 <a href="https://glama.ai/mcp/servers/ml61kiz1gm"><img width="380" height="200" src="https://glama.ai/mcp/servers/ml61kiz1gm/badge" alt="OpenCTI Server MCP server" /></a>
@@ -37,6 +38,16 @@ OpenCTI MCP Server is a Model Context Protocol (MCP) server that provides seamle
 - OpenCTI API token
 
 ## Installation
+
+### Installing via Smithery
+
+To install OpenCTI Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/opencti-server):
+
+```bash
+npx -y @smithery/cli install opencti-server --client claude
+```
+
+### Manual Installation
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/opencti-mcp-server.git
